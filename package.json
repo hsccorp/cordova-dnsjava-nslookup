@@ -1,0 +1,27 @@
+{
+  "name": "cordova-dnsjava-nslookup",
+  "version": "0.1.0",
+  "description": "Cordova DNSJava Nslookup Plugin",
+  "cordova": {
+    "id": "cordova-dnsjava-nslookup",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsccorp/cordova-dnsjava-nslookup"
+  },
+  "bugs": {
+    "url": "https://github.com/hsccorp/cordova-dnsjava-nslookup/issues"
+  },
+  "keywords": [
+    "cordova",
+    "nslookup",
+	"dnsjava",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "HSC",
+  "license": "MIT"
+}
