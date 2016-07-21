@@ -2,10 +2,10 @@
 
 This plugin utilizes dnsjava to do DNS lookups. 
 
->1) It support -type lookup(eg. "ANY", 'AAAA', 'MX' etc).<br>
->2) It supports reverse DNS lookup for both ipv6 and ipv4 address types.<br>
->3) It supports change in default timeout interval by using the 'timeout' parameter (in seconds).<br>
->4) By default, it will query the same DNS the system is configured to use for all network operations. You can specify a custom DNS to query using the "dns" parameter in query.<br><br>
+> - It support -type lookup(eg. "ANY", 'AAAA', 'MX' etc).<br>
+> - It supports reverse DNS lookup for both ipv6 and ipv4 address types.<br>
+> - It supports change in default timeout interval by using the 'timeout' parameter (in seconds).<br>
+> - By default, it will query the same DNS the system is configured to use for all network operations. You can specify a custom DNS to query using the "dns" parameter in query.<br><br>
 For reverse DNS lookup pass the "reverse" parameter as  'ipv6' or 'ipv4' in request.<br>
 Query is passed as array of json objects.
 
@@ -14,6 +14,7 @@ Query is passed as array of json objects.
 > cordova plugin add cordova-dnsjava-nslookup-master  
 
 ## Usage
+```js
 
           var query =  [{query: "google.com"},
           {query: "yahoo.com",type: "ANY" },
@@ -37,9 +38,12 @@ Query is passed as array of json objects.
           };
            var n = new NsLookup();
           n.nslookup(query, success, err);
-
-## Response
 ```
+## Response
+
+Response is an array of json objects containing both request and response parameters.
+
+```json
 
 [{
 	"request": {
@@ -78,3 +82,21 @@ Query is passed as array of json objects.
 }]
 
 ```
+
+The following records are currently supported:
+
+* A
+* ANY
+* AAAA
+* CNAME
+* MX
+* NS
+* PTR
+* SOA
+* SPF
+* SRV
+* TXT
+
+### Supported Platforms
+
+- Android
