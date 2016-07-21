@@ -2,39 +2,79 @@
 
 This plugin utilizes dnsjava to do DNS lookups. 
 
-1) It support -type lookup(eg. "ANY", 'AAAA', 'MX' etc).<br>
-2) It supports reverse DNS lookup for both ipv6 and ipv4 address types.<br>
-3) It supports change in default timeout interval by using the 'timeout' parameter (in seconds).<br>
-4) By default, it will query the same DNS the system is configured to use for all network operations. You can specify a custom DNS to query using the "dns" parameter in query.<br><br>
+>1) It support -type lookup(eg. "ANY", 'AAAA', 'MX' etc).<br>
+>2) It supports reverse DNS lookup for both ipv6 and ipv4 address types.<br>
+>3) It supports change in default timeout interval by using the 'timeout' parameter (in seconds).<br>
+>4) By default, it will query the same DNS the system is configured to use for all network operations. You can specify a custom DNS to query using the "dns" parameter in query.<br><br>
 For reverse DNS lookup pass the "reverse" parameter as  'ipv6' or 'ipv4' in request.<br>
 Query is passed as array of json objects.
 
 ## Installation
 
-> cordova plugin add cordova-plugin-nslookup-master  
+> cordova plugin add cordova-dnsjava-nslookup-master  
 
 ## Usage
 
-          var query =  [{query: "GOOGLE.COM"},
-          {query: "yahoo.com",	type: "ANY" },
-          {query: '192.168.121.51',reverse: "ipv4"}, 
-          {query: '2001:41d0:8:e8ad::1',reverse: 'ipv6',dns: "192.168.0.37",timeout: '40'},
-          {query: 'google.com',type: 'AAAA',dns: "192.168.0.37",	timeout: '15' },
-          {query: 'www.tiste.org',	type: 'CNAME'}, 
+          var query =  [{query: "google.com"},
+          {query: "yahoo.com",type: "ANY" },
+          {query: 'x.x.x.x',reverse: "ipv4"}, 
+          {query: 'xxxx:xxxx:x:xxxx::x',reverse: 'ipv6',dns: "x.x.x.x",timeout: '40'},
+          {query: 'google.com',type: 'AAAA',dns: "192.x.x.x",timeout: '15' },
+          {query: 'www.tiste.org',type: 'CNAME'}, 
           {query: 'google.com',type: 'MX' }, 
-          {query: 'google.com',	type: 'NS'}, 
-          {query: '192.174.198.91.in-addr.arpa',type: 'PTR'}, 
+          {query: 'google.com',type: 'NS'}, 
+          {query: '192.x.x.x.in-addr.arpa',type: 'PTR'}, 
           {query: 'google.com',type: 'SOA'}, 
           {query: '_xmpp-server._tcp.gmail.com',type: 'SRV'},
           {query: 'google.com',type: 'TXT'}, 
-          {query: 'google.com',type: 'AAAA',dns: "192.168.0.37",timeout: '15'}];
+          {query: 'google.com',type: 'AAAA',dns: "192.x.x.x",timeout: '15'}];
          
           function success(results) {
                console.log(JSON.stringify(results));
-            };
-           function err(e) {
+          };
+          function err(e) {
                   console.log(JSON.stringify(results));
-            };
-            n = new NsLookup();
-            n.nslookup(query, success, err);
+          };
+           var n = new NsLookup();
+          n.nslookup(query, success, err);
 
+## Response
+```
+
+[{
+	"request": {
+		"query": "www.google.com",
+		"dns": "",
+		"protocol": "ipv4",
+		"type": "A",
+		"timeout": ""
+	},
+	"response": {
+		"status": "success",
+		"result": [{
+			"TTL": 0,
+			"type": "A",
+			"address": "x.x.x.x",
+			"lookupTime": 5
+		}]
+	}
+}, {
+	"request": {
+		"query": "www.somesite.com",
+		"dns": "",
+		"protocol": "ipv4",
+		"type": "AAAA",
+		"timeout": ""
+	},
+	"response": {
+		"status": "success",
+		"result": [{
+			"TTL": 0,
+			"type": "AAAA",
+			"address": "xxxx:xxx:xxx:xxx:xxx:xxxx:xxxx:xxxx",
+			"lookupTime": 8
+		}]
+	}
+}]
+
+```
