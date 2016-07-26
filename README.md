@@ -34,7 +34,7 @@ Query is passed as array of json objects.
                console.log(JSON.stringify(results));
           };
           function err(e) {
-                  console.log(JSON.stringify(results));
+                  console.log(JSON.stringify(e));
           };
            var n = new NsLookup();
           n.nslookup(query, success, err);
