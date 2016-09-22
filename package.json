@@ -5,7 +5,8 @@
   "cordova": {
     "id": "cordova-dnsjava-nslookup",
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   },
   "repository": {
