@@ -100,3 +100,4 @@ The following records are currently supported:
 ### Supported Platforms
 
 - Android
+- iOS
