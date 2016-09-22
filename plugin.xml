@@ -7,8 +7,8 @@
     <description>Cordova Nslookup Plugin</description>
     <license>MIT</license>
     <keywords>cordova,nslookup</keywords>
-    <repo>https://github.com/t1st3/cordova-plugin-nslookup.git</repo>
-    <issue>https://github.com/t1st3/cordova-plugin-nslookup/issues</issue>
+    <repo>https://github.com/hsccorp/cordova-dnsjava-nslookup.git</repo>
+    <issue>https://https://github.com/hsccorp/cordova-dnsjava-nslookup/issues</issue>
 
     <js-module src="www/nslookup.js" name="nslookup">
       <clobbers target="NsLookup" />
@@ -17,11 +17,11 @@
     <platform name="android">
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="Nslookup">
-          <param name="android-package" value="org.tiste.cordova.nslookup.Nslookup"/>
+          <param name="android-package" value="org.hsc.cordova.nslookup.Nslookup"/>
         </feature>
       </config-file>
       <source-file src="src/android/libs/dnsjava-2.1.7.jar" target-dir="libs" />
-      <source-file src="src/android/Nslookup.java" target-dir="src/org/tiste/cordova/nslookup"/>
+      <source-file src="src/android/Nslookup.java" target-dir="src/org/hsc/cordova/nslookup"/>
     </platform>
     
     <!-- ios -->
